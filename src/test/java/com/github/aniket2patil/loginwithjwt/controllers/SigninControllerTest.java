@@ -28,12 +28,12 @@ public class SigninControllerTest {
 	
 	@Test
     void shouldCreateJwtToken() throws Exception {
+		
 		final AuthenticationRequest authenticationRequest = 
 				new AuthenticationRequest("test_email", 
-											"test_phone", 
-											"test_password",
-											""
-											);
+										"test_phone", 
+										"test_password",
+										"");
 		
         given(jwtTokenUtil.generateToken("test_verification_token")).willReturn("test");
 
