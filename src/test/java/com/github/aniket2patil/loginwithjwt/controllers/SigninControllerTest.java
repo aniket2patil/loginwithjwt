@@ -18,16 +18,16 @@ import com.github.aniket2patil.loginwithjwt.util.JwtTokenUtil;
 public class SigninControllerTest {
 	
 	@Autowired
-    private MockMvc mockMvc;
+	private MockMvc mockMvc;
 	
-    @MockBean
+	@MockBean
 	private JwtTokenUtil jwtTokenUtil;
-    
-    @Autowired
-    private ObjectMapper objectMapper;
+	
+	@Autowired
+	private ObjectMapper objectMapper;
 	
 	@Test
-    void shouldCreateJwtToken() throws Exception {
+	void shouldCreateJwtToken() throws Exception {
 		
 		final AuthenticationRequest authenticationRequest = 
 				new AuthenticationRequest("test_email", 
@@ -35,13 +35,13 @@ public class SigninControllerTest {
 										"test_password",
 										"");
 		
-        given(jwtTokenUtil.generateToken("test_verification_token")).willReturn("test");
-
-        this.mockMvc.perform(post("/signin")
-        		.contentType(MediaType.APPLICATION_JSON)
-        		.content(objectMapper.writeValueAsString(authenticationRequest)))
-        		.andExpect(status().isOk());
-    }
+	    given(jwtTokenUtil.generateToken("test_verification_token")).willReturn("test");
+	
+	    this.mockMvc.perform(post("/signin")
+	    		.contentType(MediaType.APPLICATION_JSON)
+	    		.content(objectMapper.writeValueAsString(authenticationRequest)))
+	    		.andExpect(status().isOk());
+	}
 	
 
 }
